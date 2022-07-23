@@ -113,7 +113,7 @@ userRouter.get('/getUserInfo/:username', async (req, res) => {
       id: getUserInfoRes.data.id,
       nickname: getUserInfoRes.data.nickname,
       username: getUserInfoRes.data.username,
-      description: getUserInfoRes.data.description,
+      description: getUserInfoRes.data.description ?? '',
       shortUrl: getUserInfoRes.data.shortUrl,
       profileImage:
         getUserInfoRes.data.profileImage !== null
@@ -123,7 +123,7 @@ userRouter.get('/getUserInfo/:username', async (req, res) => {
             )}/${getUserInfoRes.data.profileImage.filename.slice(2, 4)}/${
               getUserInfoRes.data.profileImage.filename
             }.${getUserInfoRes.data.profileImage.imageType}`
-          : null,
+          : 'https://playentry.org/img/DefaultCardUserThmb.svg',
       coverImage:
         getUserInfoRes.data.coverImage !== null
           ? `https://playentry.org/uploads/${getUserInfoRes.data.coverImage.filename.slice(
@@ -132,7 +132,7 @@ userRouter.get('/getUserInfo/:username', async (req, res) => {
             )}/${getUserInfoRes.data.coverImage.filename.slice(2, 4)}/${
               getUserInfoRes.data.coverImage.filename
             }.${getUserInfoRes.data.coverImage.imageType}`
-          : null,
+          : '',
       role: getUserInfoRes.data.role,
       status: getUserInfoRes.data.status,
       projects: projectInfo,
