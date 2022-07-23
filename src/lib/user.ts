@@ -32,6 +32,7 @@ class UserService {
           return await this.getId(username, true);
         } else return { success: false, error: `Error: ${statusCode}` };
       }
+      if (!data.data.user.id) return { success: false, error: 'notfound' };
 
       return { success: true, data: data.data.user.id };
     } catch (error) {
